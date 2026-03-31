@@ -17,21 +17,46 @@ export default function Home() {
         { id: 'ds', name: 'DISAWAR', time: '03:30 AM' }
     ];
 
-    const currentMonth = new Date().toISOString().slice(0, 7);
+    const currentMonth = "2026-03";
 
-    // स्क्रीनशॉट 31/32 का डेटा (DT 1 to 5)
+    // आपके द्वारा दिया गया 1 से 31 मार्च तक का सटीक डेटा
     const initialChartData = [
-        { date: '1', fb: '02', gz: '10', gl: '92', ds: '81', sg: '36', l7: '--' },
-        { date: '2', fb: '91', gz: '10', gl: '30', ds: '68', sg: '56', l7: '--' },
-        { date: '3', fb: '06', gz: '13', gl: '17', ds: '49', sg: '17', l7: '--' },
-        { date: '4', fb: '66', gz: '65', gl: '90', ds: '19', sg: '74', l7: '--' },
-        { date: '5', fb: '07', gz: '46', gl: '74', ds: '54', sg: '14', l7: '--' }
+        { date: '1', sg: '36', fb: '02', gz: '10', gl: '92', ds: '##', l7: '--' },
+        { date: '2', sg: '00', fb: '91', gz: '10', gl: '30', ds: '68', l7: '--' },
+        { date: '3', sg: '17', fb: '06', gz: '13', gl: '17', ds: '49', l7: '--' },
+        { date: '4', sg: '74', fb: '66', gz: '65', gl: '90', ds: '19', l7: '--' },
+        { date: '5', sg: '14', fb: '07', gz: '46', gl: '74', ds: '54', l7: '--' },
+        { date: '6', sg: '59', fb: '36', gz: '02', gl: '45', ds: '36', l7: '--' },
+        { date: '7', sg: '57', fb: '62', gz: '60', gl: '22', ds: '38', l7: '--' },
+        { date: '8', sg: '98', fb: '29', gz: '78', gl: '51', ds: '45', l7: '--' },
+        { date: '9', sg: '94', fb: '46', gz: '26', gl: '99', ds: '65', l7: '--' },
+        { date: '10', sg: '79', fb: '79', gz: '74', gl: '64', ds: '49', l7: '--' },
+        { date: '11', sg: '76', fb: '28', gz: '58', gl: '24', ds: '09', l7: '--' },
+        { date: '12', sg: '15', fb: '90', gz: '18', gl: '09', ds: '25', l7: '--' },
+        { date: '13', sg: '36', fb: '49', gz: '72', gl: '20', ds: '03', l7: '--' },
+        { date: '14', sg: '16', fb: '82', gz: '75', gl: '74', ds: '95', l7: '--' },
+        { date: '15', sg: '48', fb: '39', gz: '27', gl: '82', ds: '39', l7: '--' },
+        { date: '16', sg: '61', fb: '68', gz: '12', gl: '17', ds: '28', l7: '--' },
+        { date: '17', sg: '45', fb: '58', gz: '26', gl: '45', ds: '47', l7: '--' },
+        { date: '18', sg: '33', fb: '90', gz: '76', gl: '76', ds: '82', l7: '--' },
+        { date: '19', sg: '33', fb: '87', gz: '26', gl: '43', ds: '50', l7: '--' },
+        { date: '20', sg: '07', fb: '74', gz: '23', gl: '85', ds: '12', l7: '--' },
+        { date: '21', sg: '26', fb: '49', gz: '17', gl: '01', ds: '16', l7: '--' },
+        { date: '22', sg: '34', fb: '40', gz: '28', gl: '70', ds: '70', l7: '--' },
+        { date: '23', sg: '71', fb: '59', gz: '10', gl: '86', ds: '27', l7: '--' },
+        { date: '24', sg: '02', fb: '28', gz: '75', gl: '82', ds: '66', l7: '--' },
+        { date: '25', sg: '90', fb: '48', gz: '70', gl: '30', ds: '13', l7: '--' },
+        { date: '26', sg: '42', fb: '43', gz: '34', gl: '68', ds: '92', l7: '--' },
+        { date: '27', sg: '16', fb: '82', gz: '43', gl: '83', ds: '26', l7: '--' },
+        { date: '28', sg: '05', fb: '35', gz: '05', gl: '26', ds: '40', l7: '--' },
+        { date: '29', sg: '00', fb: '00', gz: '14', gl: '21', ds: '93', l7: '--' },
+        { date: '30', sg: '14', fb: '84', gz: '20', gl: '39', ds: '23', l7: '--' },
+        { date: '31', sg: '--', fb: '--', gz: '--', gl: '--', ds: '81', l7: '--' }
     ];
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch Live Results
                 const resLive = await fetch('/api/results');
                 const liveJson = await resLive.json();
                 if (liveJson.length > 0) {
@@ -39,7 +64,6 @@ export default function Home() {
                     const sorted = [...liveJson].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
                     setLatestGame({ name: sorted[0].name, number: sorted[0].newResult });
                 }
-                // Fetch Chart History
                 const resChart = await fetch(`/api/results?month=${currentMonth}`);
                 const chartJson = await resChart.json();
                 setChartData(chartJson);
@@ -85,7 +109,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
-            {/* --- 1. HEADER (EXACT 100% REPLICA) --- */}
+            {/* --- HEADER (EXACT REPLICA) --- */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', backgroundColor: '#800000', color: 'white', fontSize: '11px', fontWeight: 'bold', borderBottom: '1px solid white' }}>
                 <div style={{ borderRight: '1px solid white', padding: '12px 2px' }}>HOME</div>
                 <div style={{ borderRight: '1px solid white', padding: '12px 2px' }}>SATTA CHART</div>
@@ -96,34 +120,29 @@ export default function Home() {
             <div style={{ backgroundColor: '#000', color: 'white', padding: '5px 0', borderBottom: '2px solid #ffff00' }}>
                 <marquee style={{ fontWeight: 'bold', fontSize: '14px' }}>SATTA KING LIVE RESULT | SATTA KING RECORD CHART MARCH 2026</marquee>
             </div>
-            <div className="glow-yellow-logo" style={{ backgroundColor: '#ffff00', padding: '15px 0', borderBottom: '3px solid #008000' }}>
-                <h1 style={{ fontSize: '50px', fontWeight: '900', color: 'black', margin: 0, fontStyle: 'italic', letterSpacing: '-3px' }}>SATTA KING</h1>
+            <div className="glow-yellow-logo" style={{ backgroundColor: '#ffff00', padding: '12px 0', borderBottom: '3px solid #008000' }}>
+                <h1 style={{ fontSize: '52px', fontWeight: '900', color: 'black', margin: 0, fontStyle: 'italic', letterSpacing: '-3px' }}>SATTA KING</h1>
             </div>
-            <div style={{ backgroundColor: '#008000', color: 'white', padding: '8px', fontWeight: 'bold', borderBottom: '2px solid #800000' }}>SATTA KING | SATTA KING LIVE</div>
+            <div style={{ backgroundColor: '#008000', color: 'white', padding: '8px', fontWeight: 'bold', fontSize: '15px', borderBottom: '2px solid #800000' }}>SATTA KING | SATTA KING LIVE</div>
 
-            <div style={{ backgroundColor: '#800000', color: 'white', padding: '12px', margin: '5px', border: '1px solid black' }}>
-                <h2 style={{ fontSize: '18px', margin: 0 }}>SATTA KING BEST SITE SATTA RESULT</h2>
-                <p style={{ fontSize: '14px', margin: '2px 0 0 0' }}>SATTA-KING-LIVE.COM</p>
-            </div>
-
-            {/* --- 2. DYNAMIC LATEST RESULT & TIME --- */}
+            {/* --- LATEST RESULT & TIME --- */}
             <div style={{ padding: '20px 10px' }}>
-                <h3 style={{ color: '#c000c0', fontSize: '26px', fontWeight: 'bold', margin: 0 }}>{displayTime}</h3>
+                <h3 style={{ color: '#c000c0', fontSize: '28px', fontWeight: 'bold', margin: 0 }}>{displayTime}</h3>
                 <p style={{ fontWeight: 'bold', margin: '5px 0', fontSize: '18px' }}>Today's Satta Live Result !</p>
                 <div className="blink-fast" style={{ marginTop: '15px' }}>
-                    <h2 style={{ color: 'red', fontSize: '50px', fontWeight: '900', margin: 0 }}>{latestGame.name}</h2>
-                    <div style={{ color: '#008000', fontSize: '80px', fontWeight: '900', marginTop: '-20px' }}>{latestGame.number}</div>
+                    <h2 style={{ color: 'red', fontSize: '55px', fontWeight: '900', margin: 0 }}>{latestGame.name}</h2>
+                    <div style={{ color: '#008000', fontSize: '85px', fontWeight: '900', marginTop: '-20px' }}>{latestGame.number}</div>
                 </div>
             </div>
 
-            {/* --- 3. COMPACT RESULT BOXES (SCRNSHOT 33 STYLE) --- */}
+            {/* --- COMPACT RESULT BOXES (SCRNSHOT 33 STYLE) --- */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', margin: '0 5px', borderLeft: '1.5px solid black', borderTop: '1.5px solid black', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
                 {gameList.map((game) => (
                     <div key={game.id} style={{ borderRight: '1.5px solid black', borderBottom: '1.5px solid black', padding: '15px 2px', backgroundColor: 'white' }}>
                         <h5 style={{ color: '#800000', fontSize: '20px', fontWeight: '900', margin: 0 }}>{game.name}</h5>
                         <p style={{ fontSize: '12px', fontWeight: 'bold', margin: '2px 0', color: '#444' }}>( {game.time} )</p>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
-                            <span style={{ fontSize: '18px', fontWeight: 'bold' }}>&#123; {getLive(game.id, 'old')} &#125;</span>
+                            <span style={{ fontSize: '20px', fontWeight: 'bold' }}>&#123; {getLive(game.id, 'old')} &#125;</span>
                             <span style={{ color: '#5dade2', fontSize: '22px' }}>➡️</span>
                             <div style={{ border: '3.5px solid #000080', padding: '0 8px', backgroundColor: '#fff' }}>
                                 <span style={{ fontSize: '38px', fontWeight: '900', color: '#000080' }}>[ {getLive(game.id, 'new')} ]</span>
@@ -133,15 +152,15 @@ export default function Home() {
                 ))}
             </div>
 
-            {/* --- 4. ANIMATED PROMOTION (SCRNSHOT 25/20 STYLE) --- */}
+            {/* --- PROMOTION SECTION --- */}
             <div style={{ background: 'linear-gradient(to bottom, #001a33, #000)', color: 'white', padding: '30px 10px', marginTop: '20px', borderTop: '5px solid #800000' }}>
-                <h3 className="blink" style={{ color: '#25d366', fontSize: '22px' }}>💚 Online khaiwal 💚</h3>
+                <h3 className="blink" style={{ color: '#25d366', fontSize: '24px', fontWeight: 'bold', margin: 0 }}>💚 Online khaiwal 💚</h3>
                 <h2 style={{ fontSize: '24px', margin: '10px 0' }}>❤️ 100% भरोसेमंद ❤️</h2>
                 <p style={{ fontSize: '19px', fontWeight: 'bold', color: '#ffff00' }}>जोड़ी 10 का 1000 | हरूप 100 का 1000</p>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: '20px' }}>
-                    <button onClick={() => goToWA('9650695993')} className="wa-btn-blue glow-btn">WHATSAPP (आकाश भाई खाईवाल)</button>
-                    <button onClick={() => goToWA('9354072027')} className="wa-btn-green">WHATSAPP (अली कुली मिर्ज़ा)</button>
+                    <button onClick={() => goToWA('9650695993')} className="wa-btn-blue glow-btn shadow-blue">WHATSAPP (आकाश भाई खाईवाल)</button>
+                    <button onClick={() => goToWA('9354072027')} className="wa-btn-green shadow-green">WHATSAPP (अली कुली मिर्ज़ा)</button>
                 </div>
 
                 <div className="blink-border-red" style={{ backgroundColor: '#ffff00', color: '#000', padding: '20px', margin: '30px 10px', borderRadius: '12px', border: '3px dashed red' }}>
@@ -150,13 +169,13 @@ export default function Home() {
                         <span style={{ color: 'red', fontSize: '19px', fontWeight: '900' }}>आपके अपने भाई दिवाकर खाईवाल के पास</span> <br/>
                         जोड़ी 10 के 1000 और 100 के 10000
                     </p>
-                    <button onClick={() => goToWA('9650695993')} style={{ marginTop: '15px', backgroundColor: '#25d366', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '30px', fontWeight: 'bold', cursor: 'pointer' }}>चैट शुरू करें ✅</button>
+                    <button onClick={() => goToWA('9650695993')} style={{ marginTop: '15px', backgroundColor: '#25d366', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '30px', fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 5px 15px rgba(0,0,0,0.3)' }}>WhatsApp Link ✅</button>
                 </div>
             </div>
 
-            {/* --- 5. AUTOMATIC CHART (SCRNSHOT 31/32 DATA) --- */}
+            {/* --- AUTOMATIC CHART (6 GAMES - 31 ROWS) --- */}
             <div style={{ marginTop: '30px', padding: '0 5px' }}>
-                <div style={{ backgroundColor: '#ffff00', padding: '10px', border: '2px solid black', fontWeight: 'bold', fontSize: '20px' }}>Satta King Record Chart March 2026</div>
+                <div style={{ backgroundColor: '#ffff00', padding: '12px', border: '2px solid black', fontWeight: 'bold', fontSize: '22px' }}>Satta King Record Chart March 2026</div>
                 <div style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: 'white', color: '#000', fontSize: '13px' }}>
                         <thead>
@@ -176,12 +195,12 @@ export default function Home() {
                                 return (
                                     <tr key={day} style={{ height: '35px' }}>
                                         <td style={{ border: '1.5px solid black', fontWeight: 'bold', backgroundColor: '#800000', color: 'white' }}>{day}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getChartVal(day, 'fb')}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getChartVal(day, 'gz')}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getChartVal(day, 'gl')}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getChartVal(day, 'ds')}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getChartVal(day, 'sg')}</td>
-                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px', color: '#000080' }}>{getChartVal(day, 'l7')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px' }}>{getChartVal(day, 'fb')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px' }}>{getChartVal(day, 'gz')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px' }}>{getChartVal(day, 'gl')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px' }}>{getChartVal(day, 'ds')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px' }}>{getChartVal(day, 'sg')}</td>
+                                        <td style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '18px', color: '#000080' }}>{getChartVal(day, 'l7')}</td>
                                     </tr>
                                 );
                             })}
@@ -190,19 +209,8 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* --- 6. SEO CONTENT & FOOTER (SCRNSHOT 28 REPLICA) --- */}
-            <div style={{ textAlign: 'left', padding: '20px', fontSize: '14px', color: '#333', marginTop: '30px', borderTop: '2px solid #800000' }}>
-                <div style={{ border: '2px solid blue', padding: '15px', marginBottom: '15px' }}>
-                    <h4 style={{ color: 'maroon', fontSize: '18px', margin: '0 0 5px 0' }}>What Is Satta King ?</h4>
-                    <p>Satta king is a popular lottery game. People choose numbers and if it matches the result, they win 90x money...</p>
-                </div>
-                <div style={{ backgroundColor: '#ffff00', border: '2px solid black', padding: '15px', textAlign: 'center' }}>
-                    <h4 style={{ margin: 0 }}>DISCLAIMER</h4>
-                    <p style={{ fontSize: '11px', margin: '5px 0', fontWeight: 'bold' }}>यह वेबसाइट केवल जानकारी के लिए है। हम सट्टे का समर्थन नहीं करते।</p>
-                </div>
-            </div>
-
-            <footer style={{ backgroundColor: '#000', color: '#fff', padding: '40px 10px' }}>
+            {/* --- FOOTER --- */}
+            <footer style={{ backgroundColor: '#000', color: '#fff', padding: '40px 10px', marginTop: '30px' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
                     <button onClick={() => openModal('disclaimer')} className="foot-btn">DISCLAIMER</button>
                     <button onClick={() => openModal('privacy')} className="foot-btn">PRIVACY POLICY</button>
@@ -235,10 +243,11 @@ export default function Home() {
                 .glow-yellow-logo { animation: glow 2s infinite; }
                 .wa-btn-blue { background-color: #0056b3; color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; width: 90%; cursor: pointer; }
                 .wa-btn-green { background-color: #008000; color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; width: 90%; cursor: pointer; margin-top: 10px; }
-                .glow-btn { box-shadow: 0 0 20px rgba(0,86,179,0.7); }
+                .shadow-blue { box-shadow: 0 0 15px rgba(0,86,179,0.7); }
+                .shadow-green { box-shadow: 0 0 15px rgba(0,128,0,0.7); }
                 .foot-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 12px; font-weight: bold; cursor: pointer; border-radius: 3px; }
                 body { margin: 0; padding: 0; overflow-x: hidden; }
             `}} />
         </div>
     );
-            }
+}
