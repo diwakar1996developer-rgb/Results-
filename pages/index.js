@@ -19,9 +19,9 @@ export default function Home() {
 
     const currentMonth = "2026-03";
 
-    // 1 से 30 मार्च का आपका भेजा हुआ सटीक डेटा
+    // स्क्रीनशॉट 36 का 1 से 30 मार्च तक का सटीक डेटा
     const initialChartData = [
-        { date: '1', sg: '36', fb: '02', gz: '10', gl: '92', ds: '81', l7: '--' },
+        { date: '1', sg: '36', fb: '02', gz: '10', gl: '92', ds: '##', l7: '--' },
         { date: '2', sg: '00', fb: '91', gz: '10', gl: '30', ds: '68', l7: '--' },
         { date: '3', sg: '17', fb: '06', gz: '13', gl: '17', ds: '49', l7: '--' },
         { date: '4', sg: '74', fb: '66', gz: '65', gl: '90', ds: '19', l7: '--' },
@@ -73,7 +73,7 @@ export default function Home() {
         setInterval(fetchData, 15000);
         setInterval(() => {
             const now = new Date();
-            setDisplayTime(now.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }) + " " + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }));
+            setDisplayTime(now.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }) + " " + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));
         }, 1000);
     }, []);
 
@@ -91,15 +91,16 @@ export default function Home() {
     };
 
     const goToWA = (num) => window.open(`https://wa.me/91${num}`, '_blank');
+    const openModal = (t) => setModal({ show: true, title: t.toUpperCase(), content: t === 'privacy' ? 'हम आपकी प्राइवेसी का सम्मान करते हैं।' : 'यह साइट केवल मनोरंजन के लिए है।' });
 
     return (
-        <div style={{ backgroundColor: '#fff', minHeight: '100vh', fontFamily: '"Arial Narrow", sans-serif', textAlign: 'center', margin: 0, padding: 0 }}>
+        <div style={{ backgroundColor: '#fff', minHeight: '100vh', fontFamily: '"Arial Narrow", sans-serif', textAlign: 'center', margin: 0, padding: 0, overflowX: 'hidden' }}>
             <Head>
                 <title>Satta King Live Result | Satta-King-Live.com</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
-            {/* --- HEADER (EXACT REPLICA) --- */}
+            {/* --- 1. HEADER (EXACT REPLICA) --- */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', backgroundColor: '#800000', color: 'white', fontSize: '11px', fontWeight: 'bold', borderBottom: '1px solid white' }}>
                 <div style={{ borderRight: '1px solid white', padding: '12px 2px' }}>HOME</div>
                 <div style={{ borderRight: '1px solid white', padding: '12px 2px' }}>SATTA CHART</div>
@@ -115,7 +116,7 @@ export default function Home() {
             </div>
             <div style={{ backgroundColor: '#008000', color: 'white', padding: '6px', fontWeight: 'bold', fontSize: '14px', borderBottom: '2px solid #800000' }}>SATTA KING | SATTA KING LIVE</div>
 
-            {/* --- LATEST RESULT & TIME --- */}
+            {/* --- 2. LATEST RESULT & TIME --- */}
             <div style={{ padding: '15px 0' }}>
                 <h3 style={{ color: '#c000c0', fontSize: '24px', fontWeight: 'bold', margin: 0 }}>{displayTime}</h3>
                 <p style={{ fontWeight: 'bold', margin: '5px 0', fontSize: '18px' }}>Today's Satta Live Result !</p>
@@ -125,7 +126,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* --- COMPACT RESULT BOXES (SMALLER SIZE) --- */}
+            {/* --- 3. COMPACT RESULT BOXES (SMALL SIZE) --- */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', margin: '0 5px', borderLeft: '1.5px solid black', borderTop: '1.5px solid black' }}>
                 {gameList.map((game) => (
                     <div key={game.id} style={{ borderRight: '1.5px solid black', borderBottom: '1.5px solid black', padding: '8px 2px', backgroundColor: 'white' }}>
@@ -134,7 +135,7 @@ export default function Home() {
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
                             <span style={{ fontSize: '15px', fontWeight: 'bold' }}>&#123; {getLive(game.id, 'old')} &#125;</span>
                             <span style={{ color: '#5dade2', fontSize: '18px' }}>➡️</span>
-                            <div style={{ border: '2px solid #000080', padding: '0 6px', backgroundColor: '#fff' }}>
+                            <div style={{ border: '2.5px solid #000080', padding: '0 6px', backgroundColor: '#fff' }}>
                                 <span style={{ fontSize: '28px', fontWeight: '900', color: '#000080' }}>[ {getLive(game.id, 'new')} ]</span>
                             </div>
                         </div>
@@ -142,24 +143,28 @@ export default function Home() {
                 ))}
             </div>
 
-            {/* --- PROMOTION SECTION --- */}
+            {/* --- 4. PROMOTION SECTION (FULL DETAILS) --- */}
             <div className="promo-gradient" style={{ padding: '25px 10px', marginTop: '20px', borderTop: '5px solid #800000' }}>
                 <h3 className="blink" style={{ color: '#25d366', fontSize: '22px', fontWeight: 'bold' }}>💚 Online khaiwal 💚</h3>
                 <h2 style={{ fontSize: '24px', margin: '10px 0', color: '#fff' }}>❤️ 100% भरोसेमंद ❤️</h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', marginTop: '15px' }}>
-                    <button onClick={() => goToWA('9650695993')} className="wa-btn-blue glow-btn">WHATSAPP (आकाश भाई)</button>
+                <p style={{ color: '#ffff00', fontSize: '19px', fontWeight: 'bold' }}>जोड़ी 10 का 1000 | हरूप 100 का 1000</p>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'center', marginTop: '15px' }}>
+                    <button onClick={() => goToWA('9650695993')} className="wa-btn-blue glow-btn">WHATSAPP (आकाश भाई खाईवाल)</button>
                     <button onClick={() => goToWA('9354072027')} className="wa-btn-green">WHATSAPP (अली कुली मिर्ज़ा)</button>
                 </div>
+
                 <div className="blink-border-red" style={{ backgroundColor: '#ffff00', color: '#000', padding: '15px', margin: '20px 10px', borderRadius: '12px', border: '3px dashed red' }}>
-                    <p style={{ fontSize: '16px', fontWeight: 'bold', margin: 0 }}>
+                    <p style={{ fontSize: '16px', fontWeight: 'bold', margin: 0, lineHeight: '1.4' }}>
                         दोस्तों अब घर बैठे Online गेम प्ले करे श्री गणेश से दिशावर तक। <br/>
-                        <span style={{ color: 'red', fontSize: '18px', fontWeight: '900' }}>दिवाकर भाई खाईवाल</span> <br/>
-                        जोड़ी 10 के 1000
+                        <span style={{ color: 'red', fontSize: '18px', fontWeight: '900' }}>आपके अपने भाई दिवाकर खाईवाल के पास</span> <br/>
+                        जोड़ी 10 के 1000 और 100 के 10000
                     </p>
+                    <button onClick={() => goToWA('9650695993')} style={{ marginTop: '10px', backgroundColor: '#25d366', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '5px', fontWeight: 'bold', cursor: 'pointer' }}>WhatsApp Link ✅</button>
                 </div>
             </div>
 
-            {/* --- AUTOMATIC CHART (6 GAMES) --- */}
+            {/* --- 5. AUTOMATIC CHART (6 GAMES - 31 ROWS) --- */}
             <div style={{ marginTop: '30px', padding: '0 5px' }}>
                 <div style={{ backgroundColor: '#ffff00', padding: '10px', border: '2px solid black', fontWeight: 'bold', fontSize: '20px' }}>Satta King Record Chart March 2026</div>
                 <div style={{ overflowX: 'auto' }}>
@@ -195,15 +200,42 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* --- FOOTER --- */}
+            {/* --- 6. SEO CONTENT & FOOTER (SCRNSHOT 28 REPLICA) --- */}
+            <div style={{ textAlign: 'left', padding: '20px', fontSize: '14px', color: '#333', marginTop: '30px', borderTop: '2px solid #800000' }}>
+                <div style={{ border: '2px solid blue', padding: '15px', marginBottom: '15px' }}>
+                    <h4 style={{ color: 'maroon', fontSize: '18px', margin: '0 0 5px 0' }}>What Is Satta King ?</h4>
+                    <p>Satta king is a popular lottery game. People choose numbers and if it matches the result, they win 90x money...</p>
+                </div>
+                <div style={{ backgroundColor: '#ffff00', border: '2px solid black', padding: '15px', textAlign: 'center' }}>
+                    <h4 style={{ margin: 0 }}>DISCLAIMER</h4>
+                    <p style={{ fontSize: '11px', margin: '5px 0', fontWeight: 'bold' }}>यह वेबसाइट केवल जानकारी के लिए है। हम सट्टे का समर्थन नहीं करते।</p>
+                </div>
+            </div>
+
             <footer style={{ backgroundColor: '#000', color: '#fff', padding: '40px 10px', marginTop: '30px' }}>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
-                    <button className="foot-btn">DISCLAIMER</button>
-                    <button className="foot-btn">PRIVACY POLICY</button>
+                    <button onClick={() => openModal('disclaimer')} className="foot-btn">DISCLAIMER</button>
+                    <button onClick={() => openModal('privacy')} className="foot-btn">PRIVACY POLICY</button>
                 </div>
-                <h2 style={{ fontSize: '28px', margin: '20px 0 5px 0', fontWeight: '900', borderTop: '1px solid #333', paddingTop: '15px' }}>SATTA KING LIVE</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', maxWidth: '500px', margin: '0 auto' }}>
+                    {['Satta King VIP', 'Satta King Fast', 'Contact Us', 'About Us', 'Sitemap', 'Lucky 7'].map(b => (
+                        <div key={b} style={{ backgroundColor: '#ffff00', color: '#000', padding: '6px', fontWeight: 'bold', fontSize: '11px', border: '1px solid #000' }}>{b}</div>
+                    ))}
+                </div>
+                <h2 style={{ fontSize: '28px', margin: '25px 0 5px 0', fontWeight: '900', borderTop: '1px solid #333', paddingTop: '15px' }}>SATTA KING LIVE</h2>
                 <p style={{ fontSize: '11px', color: '#666' }}>Copyright © 2018-2026 - SATTA KING LIVE</p>
             </footer>
+
+            {/* --- POP-UP MODAL --- */}
+            {modal.show && (
+                <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ backgroundColor: '#fff', color: '#000', padding: '30px', borderRadius: '10px', maxWidth: '90%' }}>
+                        <h2>{modal.title}</h2>
+                        <p>{modal.content}</p>
+                        <button onClick={() => setModal({show:false})} style={{ padding: '10px 20px', backgroundColor: '#800000', color: '#fff', border: 'none', borderRadius: '5px' }}>CLOSE</button>
+                    </div>
+                </div>
+            )}
 
             <style dangerouslySetInnerHTML={{ __html: `
                 @keyframes blinker { 50% { opacity: 0; } }
