@@ -19,7 +19,7 @@ export default function Admin() {
 
     const games = [
         { id: 'sg', name: 'SHREE GANESH' }, { id: 'fb', name: 'FARIDABAD' },
-        { id: 'gb', name: 'GAZIYABAD' }, { id: 'gl', name: 'GALI CHOR' },
+        { id: 'gz', name: 'GAZIYABAD' }, { id: 'gl', name: 'GALI CHOR' },
         { id: 'l7', name: 'LUCKY 7 NIGHT' }, { id: 'ds', name: 'DISAWAR' }
     ];
 
