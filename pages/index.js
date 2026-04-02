@@ -12,7 +12,7 @@ export default function Home() {
     const gameList = [
         { id: 'sg', name: 'SHREE GANESH', time: '04:30 PM', h: 16, m: 30 },
         { id: 'fb', name: 'FARIDABAD', time: '05:45 PM', h: 17, m: 45 },
-        { id: 'gz', name: 'GAZIYABAD', time: '09:30 PM', h: 21, m: 30 },
+        { id: 'gb', name: 'GAZIYABAD', time: '09:30 PM', h: 21, m: 30 },
         { id: 'gl', name: 'GALI CHOR', time: '11:25 PM', h: 23, m: 25 },
         { id: 'l7', name: 'LUCKY 7 NIGHT', time: '02:15 AM', h: 2, m: 15 },
         { id: 'ds', name: 'DISAWAR', time: '03:30 AM', h: 3, m: 30 }
@@ -190,7 +190,7 @@ export default function Home() {
                             <tr style={{ backgroundColor: '#800000', color: 'white' }}>
                                 <th style={{ border: '1.5px solid black', padding: '8px' }}>DT</th>
                                 <th style={{ border: '1.5px solid black' }}>FB</th>
-                                <th style={{ border: '1.5px solid black' }}>GZ</th>
+                                <th style={{ border: '1.5px solid black' }}>GB</th>
                                 <th style={{ border: '1.5px solid black' }}>GL</th>
                                 <th style={{ border: '1.5px solid black' }}>DS</th>
                                 <th style={{ border: '1.5px solid black' }}>SG</th>
@@ -203,7 +203,7 @@ export default function Home() {
                                 return (
                                     <tr key={day} style={{ height: '32px' }}>
                                         <td style={{ border: '1.5px solid black', fontWeight: 'bold', backgroundColor: '#800000', color: 'white' }}>{day}</td>
-                                        {['fb', 'gz', 'gl', 'ds', 'sg', 'l7'].map(id => (
+                                        {['fb', 'gb', 'gl', 'ds', 'sg', 'l7'].map(id => (
                                             <td key={id} style={{ border: '1.5px solid black', fontWeight: 'bold', fontSize: '17px' }}>{getAprilVal(day, id)}</td>
                                         ))}
                                     </tr>
@@ -283,11 +283,4 @@ export default function Home() {
                 .glow-yellow-logo { animation: glow 2s infinite; }
                 .promo-gradient { background: linear-gradient(180deg, #001a33 0%, #000 100%); }
                 .wa-btn-blue { background-color: #0056b3; color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; width: 90%; cursor: pointer; }
-                .wa-btn-green { background-color: #008000; color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; width: 90%; cursor: pointer; margin-top: 10px; }
-                .glow-btn { box-shadow: 0 0 20px rgba(0,86,179,0.7); }
-                .foot-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 12px; font-weight: bold; cursor: pointer; border-radius: 3px; }
-                body { margin: 0; padding: 0; overflow-x: hidden; }
-            `}} />
-        </div>
-    );
-}
+  
