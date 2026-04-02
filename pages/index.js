@@ -12,7 +12,7 @@ export default function Home() {
     const gameList = [
         { id: 'sg', name: 'SHREE GANESH', time: '04:30 PM', h: 16, m: 30 },
         { id: 'fb', name: 'FARIDABAD', time: '05:45 PM', h: 17, m: 45 },
-        { id: 'gb', name: 'GAZIYABAD', time: '09:30 PM', h: 21, m: 30 },
+        { id: 'gz', name: 'GAZIYABAD', time: '09:30 PM', h: 21, m: 30 },
         { id: 'gl', name: 'GALI CHOR', time: '11:25 PM', h: 23, m: 25 },
         { id: 'l7', name: 'LUCKY 7 NIGHT', time: '02:15 AM', h: 2, m: 15 },
         { id: 'ds', name: 'DISAWAR', time: '03:30 AM', h: 3, m: 30 }
